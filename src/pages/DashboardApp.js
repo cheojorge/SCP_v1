@@ -1,5 +1,4 @@
-import { faker } from '@faker-js/faker';
-import * as React from 'react';
+import {useState} from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
@@ -19,7 +18,16 @@ import {
 
 export default function DashboardApp() {
 
-
+  const [task, setTask] = useState([
+      { id: 1, label: 'Despachar TDR' },
+      { id: 2, label: 'Consultar Area requirente' },
+      { id: 3, label: 'Generar Quipux' },
+      { id: 4, label: 'Enviar expediente' },
+      { id: 5, label: 'Firmar actas' },
+      { id: 6, label: 'Solicitar cotizaciones AutoCAD' },
+      { id: 7, label: 'Terminar Estudio de Mercado' },
+      { id: 8, label: 'Solicitar certificaciones' }, 
+  ])
   const theme = useTheme();
   const posit = [
     {nota:'Revisar TDR 1', from:'Jorge Cajamarca'},
@@ -45,7 +53,7 @@ export default function DashboardApp() {
     { fase: 'Contractual', tipo: 'Subasta Inversa', proceso: 'Proceso de prueba 7', cuatrimestre: 'Primero', responsable: 'Jorge Cajamarca', administrador: 'Alejandro Pinargote', analista: 'Diana Vargas', history: [{ fecha: '26/07/2022', actividad: 'recoleccion de informacion', usuario: 'Jorge Cajamarca' }, { fecha: '26/07/2022', actividad: 'recoleccion de informacion', usuario: 'Jorge Cajamarca' }] },
     { fase: 'Preparatoria', tipo: 'infima cuantia', proceso: 'Proceso de prueba 8', cuatrimestre: 'Segundo', responsable: 'Julio Enriquez', administrador: 'Marcelo Proaño', analista: 'Javier Diaz', history: [{ fecha: '26/07/2022', actividad: 'recoleccion de informacion', usuario: 'Jorge Cajamarca' }, { fecha: '26/07/2022', actividad: 'recoleccion de informacion', usuario: 'Jorge Cajamarca' }] },
   ]
-  
+
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
@@ -65,16 +73,8 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} sm={12} lg={6}>
             <AppTasks
               title="Tareas"
-              list={[
-                { id: '1', label: 'Despachar TDR' },
-                { id: '2', label: 'Consultar Area requirente' },
-                { id: '3', label: 'Generar Quipux' },
-                { id: '4', label: 'Enviar expediente' },
-                { id: '5', label: 'Firmar actas' },
-                { id: '6', label: 'Solicitar cotizaciones AutoCAD' },
-                { id: '7', label: 'Terminar Estudio de Mercado' },
-                { id: '8', label: 'Solicitar certificaciones' },
-              ]}
+              list={task}
+              setTaskDash={setTask}
             />
           </Grid>
 
