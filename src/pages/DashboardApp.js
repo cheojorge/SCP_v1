@@ -17,31 +17,29 @@ import {
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-
-  const [task, setTask] = useState([
-      { id: 1, label: 'Despachar TDR' },
-      { id: 2, label: 'Consultar Area requirente' },
-      { id: 3, label: 'Generar Quipux' },
-      { id: 4, label: 'Enviar expediente' },
-      { id: 5, label: 'Firmar actas' },
-      { id: 6, label: 'Solicitar cotizaciones AutoCAD' },
-      { id: 7, label: 'Terminar Estudio de Mercado' },
-      { id: 8, label: 'Solicitar certificaciones' }, 
-  ])
   const theme = useTheme();
-  const posit = [
-    {nota:'Revisar TDR 1', from:'Jorge Cajamarca'},
-    {nota:'Reunion de area', from:'Francisco Barros'},
-    {nota:'Asiganacion de Porceso', from:'Alejandro Pinargote'},
-    {nota:'Revision de pliegos', from:'Darwin Acosta'},
-    {nota:'Despachar TDR', from:'Jorge Cajamarca'},
-    {nota:'Revisar TDR 1', from:'Jorge Cajamarca'},
-    {nota:'Reunion de area', from:'Francisco Barros'},
-    {nota:'Asiganacion de Porceso', from:'Alejandro Pinargote'},
-    {nota:'Revision de pliegos', from:'Darwin Acosta'},
-    {nota:'Despachar TDR', from:'Jorge Cajamarca'},
-   
-  ]
+  const [task, setTask] = useState([
+      { id: 1, id_usuario: 1, label: 'Despachar TDR' },
+      { id: 2, id_usuario: 1, label: 'Consultar Area requirente' },
+      { id: 3, id_usuario: 2, label: 'Generar Quipux' },
+      { id: 4, id_usuario: 2, label: 'Enviar expediente' },
+      { id: 5, id_usuario: 3, label: 'Firmar actas' },
+      { id: 6, id_usuario: 3, label: 'Solicitar cotizaciones AutoCAD' },
+      { id: 7, id_usuario: 1, label: 'Terminar Estudio de Mercado' },
+      { id: 8, id_usuario: 2, label: 'Solicitar certificaciones' }, 
+  ])
+  const [posit, setPosit] = useState([
+    { id:1 ,id_usuario :1, nota:'Revisar TDR 1', from:'Jorge Cajamarca'},
+    { id:2 ,id_usuario :1, nota:'Reunion de area', from:'Francisco Barros'},
+    { id:3 ,id_usuario :1, nota:'Asiganacion de Porceso', from:'Alejandro Pinargote'},
+    { id:4 ,id_usuario :1, nota:'Revision de pliegos', from:'Darwin Acosta'},
+    { id:5 ,id_usuario :2, nota:'Despachar TDR', from:'Jorge Cajamarca'},
+    { id:6 ,id_usuario :2, nota:'Revisar TDR 1', from:'Jorge Cajamarca'},
+    { id:7 ,id_usuario :2, nota:'Reunion de area', from:'Francisco Barros'},
+    { id:8 ,id_usuario :3, nota:'Asiganacion de Porceso', from:'Alejandro Pinargote'},
+    { id:9 ,id_usuario :3, nota:'Revision de pliegos', from:'Darwin Acosta'},
+    { id:10 ,id_usuario :3, nota:'Despachar TDR', from:'Jorge Cajamarca'},
+  ])
 
   const procesosData = [
     { fase: 'Preparatoria', tipo: 'infima cuantia', proceso: 'Proceso de prueba 1', cuatrimestre: 'Primero', responsable: 'Jorge Cajamarca', administrador: 'Alejandro Pinargote', analista: 'Diana Vargas', history: [{ fecha: '26/07/2022', actividad: 'recoleccion de informacion', usuario: 'Jorge Cajamarca' }, { fecha: '26/07/2022', actividad: 'recoleccion de informacion', usuario: 'Jorge Cajamarca' }] },
@@ -65,7 +63,8 @@ export default function DashboardApp() {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <AppPosit
             title="Notas"
-            list={posit}
+            list={posit.filter(item => item.id_usuario === 2)}
+            setPosit={setPosit}
             />
           </Grid>
 
@@ -73,7 +72,7 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} sm={12} lg={6}>
             <AppTasks
               title="Tareas"
-              list={task}
+              list={task.filter(item => item.id_usuario === 2)}
               setTaskDash={setTask}
             />
           </Grid>

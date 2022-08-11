@@ -13,7 +13,8 @@ import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 //
 import navConfig from './NavConfig';
-import LOGO from '../../img/LOGOAME.png'
+// import LOGO from '../../img/LOGOAME.png'
+import LOGO from '../../img/RCH.png'
 
 // ----------------------------------------------------------------------
 

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 // @mui
 import { Card, Typography, CardContent, CardHeader, CardActions, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 // components
 
@@ -9,9 +8,10 @@ AppWidgetSummary.propTypes = {
   title: PropTypes.string,
   color: PropTypes.string,
   autor: PropTypes.string,
+  view: PropTypes.string,
 };
 
-export default function AppWidgetSummary({title, color = 'info', autor}) {
+export default function AppWidgetSummary({ title, color = 'info', autor, view, handlerOnCheck, id}) {
   return (
     <Card
       sx={{
@@ -27,12 +27,11 @@ export default function AppWidgetSummary({title, color = 'info', autor}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-      <IconButton>
-          <CheckCircleIcon />
-        </IconButton>
-        <IconButton>
-          <DeleteIcon />
-        </IconButton>
+        {
+          view === 'view' 
+          ?<IconButton disabled><CheckCircleIcon /></IconButton>
+          :<IconButton onClick={()=>handlerOnCheck(id)}><CheckCircleIcon /></IconButton>
+        }
       </CardActions>
 
     </Card>
