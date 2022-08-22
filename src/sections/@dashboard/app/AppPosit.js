@@ -25,12 +25,16 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 // ----------------------------------------------------------------------
 import AppWidgetSummary from './AppWidgetSummary';
 
+// const
+
+import users from '../../../const/users'
+
 AppPosit.propTypes = {
   title: PropTypes.string,
   list: PropTypes.array,
 };
 
-export default function AppPosit({ title, list, setPosit }) {
+export default function AppPosit({ title, list, setPosit, autor }) {
 
   const style = {
     position: 'absolute',
@@ -101,7 +105,7 @@ export default function AppPosit({ title, list, setPosit }) {
               <Autocomplete
                 multiple
                 id="para"
-                options={check ? user : grups}
+                options={check ? users : grups}
                 disableCloseOnSelect
                 getOptionLabel={(option) => option.name}
                 renderOption={(props, option, { selected }) => (
@@ -112,7 +116,7 @@ export default function AppPosit({ title, list, setPosit }) {
                       style={{ marginRight: 8 }}
                       checked={selected}
                     />
-                    {option.name}
+                    {`${option.name}`}
                   </li>
                 )}
 
@@ -122,7 +126,7 @@ export default function AppPosit({ title, list, setPosit }) {
               />
               <TextField sx={{ mt: 2, mb: 2 }} value={nota} id="nota" label="Nota" variant="outlined" onChange={handleChangeNota} />
             </FormControl>
-            <AppWidgetSummary autor={'Sharon Lopez'} title={nota} view={'view'} />
+            <AppWidgetSummary autor={autor} title={nota} view={'view'} />
             <Button onClick={handleNewNote} sx={{mt:2}}>Crear</Button>
             <Button onClick={handleClose} sx={{mt:2}}>Cancelar</Button>
           </Box>

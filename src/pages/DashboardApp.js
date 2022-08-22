@@ -12,12 +12,15 @@ import {
   AppPosit,
 } from '../sections/@dashboard/app';
 
+// userAuth
+import useAuth from '../hooks/useAuth'
 
 
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
   const theme = useTheme();
+  const { userNameAuth } = useAuth();
   const [task, setTask] = useState([
       { id: 1, id_usuario: 1, label: 'Despachar TDR' },
       { id: 2, id_usuario: 1, label: 'Consultar Area requirente' },
@@ -56,15 +59,16 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hola, Bienvenido de regreso
+          {`Hola ${userNameAuth[0]?.name}, Bienvenido de regreso`}
         </Typography>
 
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <AppPosit
             title="Notas"
-            list={posit.filter(item => item.id_usuario === 2)}
+            list={posit.filter(item => item.id_usuario === userNameAuth[0]?.id)}
             setPosit={setPosit}
+            autor =  {`${userNameAuth[0]?.name} ${userNameAuth[0]?.lastName}`}
             />
           </Grid>
 
@@ -72,7 +76,7 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} sm={12} lg={6}>
             <AppTasks
               title="Tareas"
-              list={task.filter(item => item.id_usuario === 2)}
+              list={task.filter(item => item.id_usuario === userNameAuth[0]?.id)}
               setTaskDash={setTask}
             />
           </Grid>
