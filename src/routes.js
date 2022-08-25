@@ -2,7 +2,7 @@ import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
 //
-import Blog from './pages/Blog';
+import AdminUser from './pages/AdminUser';
 import NotFound from './pages/Page404';
 import Pac from './pages/Pac';
 import DashboardApp from './pages/DashboardApp';
@@ -21,7 +21,7 @@ export default function Router() {
         { path: 'app', element: <RequireAuth><DashboardApp /></RequireAuth> },
         { path: 'MisProcesos', element:  <RequireAuth><MisProcesos /></RequireAuth> },
         { path: 'pac', element:  <RequireAuth><Pac /></RequireAuth> },
-        { path: 'blog', element:  <RequireAuth><Blog /> </RequireAuth>},
+        { path: 'administrador', element:  <RequireAuth><AdminUser /> </RequireAuth>},
       ],
     },
     {

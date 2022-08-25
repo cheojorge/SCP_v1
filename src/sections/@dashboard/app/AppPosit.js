@@ -62,12 +62,6 @@ export default function AppPosit({ title, list, setPosit, autor }) {
       setNota(event.target.value);
     };
 
-    const user = [
-      { id: 1, name: 'Sharon Lopez' },
-      { id: 2, name: 'Tatiana Torres' },
-      { id: 3, name: 'Jefferson Ayala' }
-    ]
-
     const grups = [
       { id: 1, name: 'Planificacion' },
       { id: 2, name: 'Compras' },

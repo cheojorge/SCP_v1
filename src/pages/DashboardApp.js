@@ -59,16 +59,16 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          {`Hola ${userNameAuth[0]?.name}, Bienvenido de regreso`}
+          {`Hola ${userNameAuth[0]?.name_user}, Bienvenid@ de regreso`}
         </Typography>
 
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <AppPosit
             title="Notas"
-            list={posit.filter(item => item.id_usuario === userNameAuth[0]?.id)}
+            list={posit.filter(item => item.id_usuario === userNameAuth[0]?.id_user)}
             setPosit={setPosit}
-            autor =  {`${userNameAuth[0]?.name} ${userNameAuth[0]?.lastName}`}
+            autor =  {`${userNameAuth[0]?.name_user} ${userNameAuth[0]?.lastName_user}`}
             />
           </Grid>
 
@@ -76,7 +76,7 @@ export default function DashboardApp() {
           <Grid item xs={12} md={6} sm={12} lg={6}>
             <AppTasks
               title="Tareas"
-              list={task.filter(item => item.id_usuario === userNameAuth[0]?.id)}
+              list={task.filter(item => item.id_usuario === userNameAuth[0]?.id_user)}
               setTaskDash={setTask}
             />
           </Grid>

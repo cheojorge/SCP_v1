@@ -11,8 +11,8 @@ function useAuth () {
 
     const login = (userName, password) =>{
 
-        if(users.filter(item => item.emal === userName).length !== 0){
-            setUserNameAuth(users.filter(item => item.emal === userName))
+        if(users.filter(item => item.email_user === userName).length !== 0){
+            setUserNameAuth(users.filter(item => item.email_user === userName))
             setAuthed(true)
             return true
         }

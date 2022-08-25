@@ -15,7 +15,8 @@ import NavSection from '../../components/NavSection';
 import navConfig from './NavConfig';
 // import LOGO from '../../img/LOGOAME.png'
 import LOGO from '../../img/RCH.png'
-
+// userAuth
+import useAuth from '../../hooks/useAuth'
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
@@ -44,7 +45,7 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
-
+  const { userNameAuth } = useAuth();
   const isDesktop = useResponsive('up', 'lg');
 
   useEffect(() => {
@@ -71,10 +72,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             <Avatar src={account.photoURL} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                {`${userNameAuth[0]?.name_user} ${userNameAuth[0]?.lastName_user}`}
               </Typography>
             </Box>
           </AccountStyle>
